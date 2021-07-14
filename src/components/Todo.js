@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Todo(props) {
-  const { id, name, completed, toggleTaskCompleted } = props;
+  const { id, name, completed, toggleTaskCompleted, deleteTask } = props;
   return (
     <li className="todo stack-small">
       <div className="c-cb">
@@ -14,7 +14,7 @@ export default function Todo(props) {
         <button type="button" className="btn">
           Edit <span className="visually-hidden">{name}</span>
         </button>
-        <button type="button" className="btn btn__danger">
+        <button type="button" className="btn btn__danger" onClick={() => deleteTask(id)}>
           Delete <span className="visually-hidden">{name}</span>
         </button>
       </div>

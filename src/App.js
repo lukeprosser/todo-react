@@ -9,7 +9,7 @@ function App(props) {
   const taskText = tasks.length !== 1 ? 'tasks' : 'task';
   const headingText = `${tasks.length} ${taskText} remaining`;
   const taskList = tasks.map(task => (
-    <Todo key={task.id} id={task.id} name={task.name} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} />
+    <Todo key={task.id} id={task.id} name={task.name} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} deleteTask={deleteTask} />
   ));
 
   function addTask(name) {
@@ -25,6 +25,11 @@ function App(props) {
       return task;
     });
     setTasks(updatedTasks);
+  }
+
+  function deleteTask(id) {
+    const remainingTasks = tasks.filter(task => task.id !== id);
+    setTasks(remainingTasks);
   }
 
   return (
